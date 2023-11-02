@@ -8,7 +8,7 @@ body,
   height: 100%;
 }
 
-*{
+/* *{
   border: 1px black solid;
 }
 body{
@@ -16,7 +16,7 @@ body{
 }
 html{
   border: 2px green solid;
-}
+} */
 @layer base {
   :root {
     --background: 0 0% 100%;
