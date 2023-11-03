@@ -124,7 +124,7 @@ const Navigation = () => {
       <aside
         ref={siderbarRef}
         className={cn(
-          " group/sidebar h-full bg-secondary overflow-y-auto relative flex w-60 flex-col z-[99999]",
+          " group/sidebar h-full bg-secondary overflow-y-auto relative flex w-60 flex-col",
           isResetting && "transition-all ease-in-out duration-300",
           isMobile && "w-0"
         )}
