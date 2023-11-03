@@ -100,6 +100,7 @@ const Navigation = () => {
   };
 
   const handleCreate = () => {
+    console.log("hello");
     const promise = create({ title: "Untitled" });
     toast.promise(promise, {
       loading: "Createing a new note...",
