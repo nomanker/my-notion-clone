@@ -8,6 +8,7 @@ import { IconPicker } from "./icon-picker";
 import { Button } from "./ui/button";
 import { ImageIcon, Smile, X } from "lucide-react";
 import TextareaAutosize from "react-textarea-autosize";
+import { useCoverImage } from "@/hooks/use-cover-image";
 
 interface ToolbarProps {
   initialData: Doc<"documents">;
@@ -21,6 +22,7 @@ export const Toolbar = ({ initialData, preview=false }: ToolbarProps) => {
 
   const update = useMutation(api.documents.update);
   const removeIcon = useMutation(api.documents.removeIcon);
+  const coverImage = useCoverImage();
 
   const enableInput = () => {
     if (preview) return;
@@ -60,7 +62,6 @@ export const Toolbar = ({ initialData, preview=false }: ToolbarProps) => {
       id: initialData._id,
     });
   };
-  console.log(preview);
 
   return (
     <div className="pl-[54px] group relative">
@@ -99,7 +100,7 @@ export const Toolbar = ({ initialData, preview=false }: ToolbarProps) => {
         )}
         {!initialData.coverImage && !preview && (
           <Button
-            onClick={() => {}}
+            onClick={coverImage.onOpen}
             className=" text-muted-foreground text-xs"
             variant="outline"
             size="sm"
