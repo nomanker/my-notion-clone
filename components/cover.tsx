@@ -7,6 +7,7 @@ import Image from "next/image";
 import { useParams } from "next/navigation";
 import { Button } from "./ui/button";
 import { ImageIcon, X } from "lucide-react";
+import { useEdgeStore } from "@/lib/edgestore";
 
 interface coverImageProps {
   url?: string;
@@ -17,8 +18,12 @@ export const Cover = ({ url, preview }: coverImageProps) => {
   const params = useParams();
   const coverImage = useCoverImage();
   const removeCoverImage = useMutation(api.documents.removeCoverImage);
+  const  {edgestore}=useEdgeStore();
 
-  const onRemove = () => {
+  const onRemove = async () => {
+    if(url){
+      await edgestore.publicFiles.delete({url:url})
+    }
     removeCoverImage({
       id: params.documentId as Id<"documents">,
     });
@@ -35,7 +40,7 @@ export const Cover = ({ url, preview }: coverImageProps) => {
       {url && !preview && (
         <div className=" opacity-0 group-hover:opacity-100 absolute bottom-5 right-5 flex items-center gap-x-2">
           <Button
-            onClick={coverImage.onOpen}
+            onClick={()=> coverImage.onReplace(url)}
             className="text-muted-foreground text-xs"
             variant="outline"
             size="sm"
