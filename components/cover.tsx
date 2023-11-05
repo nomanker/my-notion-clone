@@ -8,6 +8,7 @@ import { useParams } from "next/navigation";
 import { Button } from "./ui/button";
 import { ImageIcon, X } from "lucide-react";
 import { useEdgeStore } from "@/lib/edgestore";
+import { Skeleton } from "./ui/skeleton";
 
 interface coverImageProps {
   url?: string;
@@ -62,3 +63,9 @@ export const Cover = ({ url, preview }: coverImageProps) => {
     </div>
   );
 };
+
+Cover.Skeleton = function CoverSkeleton(){
+  return (
+    <Skeleton className="w-full h-12[vh]"/>
+  )
+}
