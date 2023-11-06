@@ -4,8 +4,7 @@ import { useUser } from "@clerk/clerk-react";
 import { useQuery } from "convex/react";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import { CommandDialog, CommandInput } from "./ui/command";
-import { CommandEmpty, CommandGroup, CommandItem, CommandList } from "cmdk";
+import { CommandDialog, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from "./ui/command";
 import { File } from "lucide-react";
 
 const SearchCommand = () => {
